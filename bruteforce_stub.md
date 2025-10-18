@@ -1,27 +1,27 @@
-# Brute-force Script - Pseudocode & Safety Guidelines
+# Brute-force Script — Pseudocode & Safety Guidelines
 
-این فایل فقط حاوی pseudo-code و دستورالعمل ایمنی است. **هیچ کد اجرایی برای حمله در این فایل وجود ندارد.**
+This file contains **pseudocode and safety guidance only**. **No executable attack code is included.**
 
-## هدف
-توضیح معماری یک اسکریپت Brute-force آموزشی که تنها در محیط کنترل‌شده و با اجازه اجرا شود.
+## Purpose
+Describe the architecture of an educational brute-force script intended to be run **only** in a controlled environment and with explicit authorization.
 
-## اصول ایمنی
-- فقط روی `localhost` یا VM ایزوله اجرا کنید.
-- قبل از اجرا یک CHECK دستی لازم است (مثلاً تغییر متغیر `I_HAVE_PERMISSION = True` در محیط).
-- محدودیت درخواست، تاخیر تصادفی، و لاگ‌کردن باید اجباری باشد.
-- هرگونه استفاده غیرمجاز ممنوع است.
+## Safety Principles
+- Run only on **localhost** or within an isolated VM/container.
+- Require an explicit manual safety check before running (e.g., setting `I_HAVE_PERMISSION = True` in the environment).
+- Enforce request throttling, randomized delays, and comprehensive logging.
+- Any unauthorized use is strictly prohibited.
 
 ## Pseudocode
-1. خواندن config (فقط مسیر فایل‌های محلی)
-2. تایید صریح کاربر:
-   - نمایش هشدار بزرگ
-   - درخواست تایپ کردن `I UNDERSTAND` برای ادامه
-3. ایجاد یک لیست از credential ها (فایل محلی)
-4. برای هر credential:
-   - اجرای یک درخواست لاگین واحد
-   - ثبت نتیجه در لاگ
-   - اعمال delay و backoff
-5. نمایش خلاصه و خروج
+1. Read configuration (only local file paths)
+2. Explicit user confirmation:
+   - Display a prominent warning
+   - Require typing `I UNDERSTAND` to proceed
+3. Build a list of credentials (from a local file)
+4. For each credential in the list:
+   - Perform a **single** login request
+   - Log the result (no automatic exploitation)
+   - Apply delay and backoff
+5. Display a summary and exit
 
-## نکته نهایی
-اگر هدف شما آموزشی است، از ابزارهای آماده و امن مانند `OWASP Juice Shop` یا پلتفرم‌های CTF استفاده کنید.
+## Final note
+If your goal is educational practice, prefer safe, purpose-built vulnerable applications and platforms such as **OWASP Juice Shop** or CTF-style environments.
